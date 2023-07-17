@@ -43,6 +43,9 @@ scene.background = cubeTextureLoader.load([
 
 const textureLoader = new THREE.TextureLoader();
 
+const pointLight = new THREE.PointLight(0xFFFFFF, 2, 300);
+scene.add(pointLight);
+
 // sun
 const sunGeo = new THREE.SphereGeometry(16, 30, 30);
 const sunMat = new THREE.MeshBasicMaterial({
@@ -54,15 +57,20 @@ scene.add(sun);
 
 // mercury
 const mercuryGeo = new THREE.SphereGeometry(3.2, 30, 30);
-const mercuryMat = new THREE.MeshBasicMaterial({
+const mercuryMat = new THREE.MeshStandardMaterial({
     map: textureLoader.load(mercuryTexture)
 });
 const mercury = new THREE.Mesh(mercuryGeo, mercuryMat);
 sun.add(mercury);
+
+const mercurryObj = new THREE.Object3D();
+mercurryObj.add(mercury);
+scene.add(mercurryObj);
 mercury.position.x = 28;
 
 
 function animate() {
+    mercurryObj.rotateY(0.04);
     sun.rotateY(0.004); 
     renderer.render(scene, camera);
 }
