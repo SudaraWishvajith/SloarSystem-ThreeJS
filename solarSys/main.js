@@ -61,12 +61,31 @@ const mercuryMat = new THREE.MeshStandardMaterial({
     map: textureLoader.load(mercuryTexture)
 });
 const mercury = new THREE.Mesh(mercuryGeo, mercuryMat);
-sun.add(mercury);
+//sun.add(mercury);
 
 const mercurryObj = new THREE.Object3D();
 mercurryObj.add(mercury);
 scene.add(mercurryObj);
 mercury.position.x = 28;
+
+// function for create planets
+function createPlanet(size, texture, position){
+    const Geo = new THREE.SphereGeometry(size, 30, 30);
+    const Mat = new THREE.MeshStandardMaterial({
+        map: textureLoader.load(texture)
+    });
+    const Mesh = new THREE.Mesh(Geo, Mat);
+    const planetObj = new THREE.Object3D();
+    planetObj.add(mesh);
+    scene.add(planetObj);
+
+    Mesh.position.x(position);
+    return {
+        mesh: Mesh,
+        obj: planetObj
+    }
+
+}
 
 
 function animate() {
