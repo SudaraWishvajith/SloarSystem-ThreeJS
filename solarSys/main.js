@@ -52,9 +52,18 @@ const sunMat = new THREE.MeshBasicMaterial({
 const sun = new THREE.Mesh(sunGeo, sunMat);
 scene.add(sun);
 
+// mercury
+const mercuryGeo = new THREE.SphereGeometry(3.2, 30, 30);
+const mercuryMat = new THREE.MeshBasicMaterial({
+    map: textureLoader.load(mercuryTexture)
+});
+const mercury = new THREE.Mesh(mercuryGeo, mercuryMat);
+sun.add(mercury);
+mercury.position.x = 28;
+
 
 function animate() {
-    sun.rotateY(0.004);
+    sun.rotateY(0.004); 
     renderer.render(scene, camera);
 }
 
