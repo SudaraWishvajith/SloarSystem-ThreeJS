@@ -106,8 +106,28 @@ const pluto = createPlanet(2.8, plutoTexture, 216);
 
 
 function animate() {
-    mercury.obj.rotateY(0.04);
+    //rotation around self
     mercury.mesh.rotateY(0.004);
+    venus.mesh.rotateY(0.002);
+    earth.mesh.rotateY(0.02);
+    mars.mesh.rotateY(0.018);
+    jupiter.mesh.rotateY(0.04);
+    saturn.mesh.rotateY(0.038);
+    uranus.mesh.rotateY(0.03);
+    neptune.mesh.rotateY(0.032);
+    pluto.mesh.rotateY(0.008);
+
+    //Around-sun-rotation
+    mercury.obj.rotateY(0.04);
+    venus.obj.rotateY(0.015);
+    earth.obj.rotateY(0.01);
+    mars.obj.rotateY(0.008);
+    jupiter.obj.rotateY(0.002);
+    saturn.obj.rotateY(0.0009);
+    uranus.obj.rotateY(0.0004);
+    neptune.obj.rotateY(0.0001);
+    pluto.obj.rotateY(0.00007);
+
 
     sun.rotateY(0.004); 
     renderer.render(scene, camera);
